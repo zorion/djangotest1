@@ -1,0 +1,9 @@
+<div>Hello
+{% if user %}
+  {{ user.username }}!
+  [<a href="foo"><b>sign out</b></a>]
+{% else %}
+  World!
+  [<a href="bar"><b>sign in</b></a>]
+{% endif %}
+</div>

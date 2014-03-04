@@ -1,0 +1,13 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style2.css' %}" />
+
+<div>
+	<h1>{{poll.question}}</h1>
+	<div><b>date:</b> {{poll.pub_data}}</div>
+	<table>
+	{% for choice in poll.choice_set.all %}
+		<tr><td>{{ choice.choice }}</td><td>{{choice.votes}} fly{{ choice.votes|pluralize }}</td></tr>
+	{% endfor %}
+	</table>
+	<a href="{% url 'polls:detail' poll.id %}">Back to poll</a>
+</div>

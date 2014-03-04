@@ -1,0 +1,34 @@
+<div style="float:right">Hello
+{% if user %}
+  {{ user.username }}!
+  [<a href="foo"><b>sign out</b></a>]
+{% else %}
+  World!
+  [<a href="bar"><b>sign in</b></a>]
+{% endif %}
+</div>
+
+
+
+ <h2>Top 10 Most Recent Guestbook Entries</h2>
+ <div>
+ {% for greeting in greetings %}
+  <p>
+  <small>[<i>{{ greeting.date.ctime }}</i>]</small>
+  <b>
+  {% if greeting.author %}
+    <code>{{ greeting.author.username }}</code>
+  {% else %}
+    <i>anonymous</i>
+  {% endif %}
+  </b>
+  wrote:
+  <>{{ greeting.content }}<>
+ {% endfor %}
+ </div>
+ <hr />
+    <form action="/hola/sign" method=post>{% csrf_token %}
+        <p><textarea name=content rows=3 cols=60></textarea></p>
+        <p><input type=submit value="Sign Guestbook"></p>
+    </form>
+
